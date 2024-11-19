@@ -5,7 +5,7 @@ Une application Node.js pour la gestion des dossiers d'élèves avec Express et 
 ## Prérequis
 
 **Node.js**
-- Téléchargez et installez Node.js depuis `https://nodejs.org/`
+- Téléchargez et installez Node.js depuis [https://nodejs.org/](https://nodejs.org/)
 - **Important** : Lors de l'installation, cochez la case "Automatically install the necessary tools" pour installer Chocolatey et les outils nécessaires
 - Cette étape peut prendre plusieurs minutes car elle installe également Python et Visual Studio Build Tools
 - Node.js (version 14 ou supérieure)
