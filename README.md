@@ -16,7 +16,7 @@ Une application Node.js pour la gestion des dossiers d'élèves avec Express et 
 
 1. Naviguer vers le répertoire du projet :
 ```bash
-cd "target location ex : C:\Users\e035\Downloads\project"
+cd "target location ex : C:\Users\pc\Downloads\project"
 ```
 
 2. Installer les dépendances :
