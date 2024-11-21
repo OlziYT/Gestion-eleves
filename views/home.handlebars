@@ -14,7 +14,7 @@
         </svg>
         Ajouter un élève
     </h2>
-    <form id="ajoutForm" onsubmit="return verifierAge(event)">
+    <form method="POST" action="/ajouter">
         <div class="form-grid">
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -133,48 +133,6 @@
 
 <script>
 let selectedEleveId = null;
-
-function calculerAge(dateNaissance) {
-    const aujourdhui = new Date();
-    const dateNaissanceObj = new Date(dateNaissance);
-    let age = aujourdhui.getFullYear() - dateNaissanceObj.getFullYear();
-    const mois = aujourdhui.getMonth() - dateNaissanceObj.getMonth();
-    
-    if (mois < 0 || (mois === 0 && aujourdhui.getDate() < dateNaissanceObj.getDate())) {
-        age--;
-    }
-    
-    return age;
-}
-
-function verifierAge(event) {
-    event.preventDefault();
-    const dateNaissance = document.getElementById('date_naissance').value;
-    const age = calculerAge(dateNaissance);
-    
-    if (age < 1 || age > 70) {
-        alert("L'âge doit être compris entre 1 et 70 ans");
-        return false;
-    }
-    
-    // Si l'âge est valide, soumettre le formulaire via AJAX
-    const formData = new FormData(event.target);
-    fetch('/ajouter', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(data => {
-                throw new Error(data.message || 'Erreur lors de l\'ajout');
-            });
-        }
-        window.location.reload();
-    })
-    .catch(error => {
-        alert(error.message);
-    });
-}
 
 function confirmerSuppression(id) {
     selectedEleveId = id;
