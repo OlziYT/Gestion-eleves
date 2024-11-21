@@ -1,0 +1,8 @@
+/* Copy all styles from main.handlebars and paste them here */
+:root {
+    --brand: #3ecf8e;
+    --brand-hover: #24b47e;
+    /* ... rest of the CSS variables ... */
+}
+
+/* ... rest of the styles ... */

@@ -1,7 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://fivcheffvizrfidapmnv.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpdmNoZWZmdml6cmZpZGFwbW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIxODIyNjUsImV4cCI6MjA0Nzc1ODI2NX0.Ylrms2HnNOzZt_FrojZJ-vFSF3zBW6E3RU-DxfTMBhQ';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Les variables d\'environnement Supabase ne sont pas définies');
+}
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -40,7 +44,7 @@ export const verifierMotDePasse = async (password) => {
     .single();
   
   if (error) throw error;
-  return password === data.password; // Pour simplifier, on compare directement
+  return password === data.password;
 };
 
 export const changerMotDePasse = async (newPassword) => {
