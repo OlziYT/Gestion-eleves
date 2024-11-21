@@ -16,22 +16,32 @@ Une application Node.js pour la gestion des dossiers d'élèves avec Express et 
 
 1. Naviguer vers le répertoire du projet :
 ```bash
-cd "target location ex : C:\Users\pc\Downloads\project"
+cd "target location ex : C:\Users\e035\Downloads\project"
 ```
 
 2. Installer les dépendances :
 ```bash
 npm install
 ```
+3. Accès local ou accès réseau
+ Depuis le même PC : http://localhost:3000 (default)
+   Depuis un autre PC du réseau local : http://[ADRESSE-IP]:3000 (aller dans server.js et modifié ligne 88 http://`localhost:` a votre adresse ip ex :http://`10.0.0.0:` 
+   tout en gardant le port 3000)
+   Remplacez [ADRESSE-IP] par l'adresse IP du PC serveur
+   Pour trouver l'adresse IP du PC serveur : Windows : `ipconfig` dans le terminal
+
 
 ## Lancement de l'Application
 
-Démarrer le serveur :
+1. Démarrer le serveur :
 ```bash
 npm start
 ```
 
-L'application sera accessible à l'adresse `http://localhost:3000`
+2. Accédez à l'application :
+
+   Depuis le même PC : http://localhost:3000
+   Depuis un autre PC du réseau local : http://[ADRESSE-IP]:3000
 
 ## Fonctionnalités
 

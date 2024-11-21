@@ -10,31 +10,25 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
+// Configuration de Handlebars
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-function calculerAge(dateNaissance) {
-  const aujourdhui = new Date();
-  const dateNaissanceObj = new Date(dateNaissance);
-  let age = aujourdhui.getFullYear() - dateNaissanceObj.getFullYear();
-  const mois = aujourdhui.getMonth() - dateNaissanceObj.getMonth();
-  
-  if (mois < 0 || (mois === 0 && aujourdhui.getDate() < dateNaissanceObj.getDate())) {
-    age--;
-  }
-  
-  return age;
-}
-
+// Routes
 app.get('/', async (req, res) => {
   try {
     const eleves = await getEleves();
+    
+    // Calcul de l'âge pour chaque élève
     const elevesAvecAge = eleves.map(eleve => {
-      const age = calculerAge(eleve.date_naissance);
+      const dateNaissance = new Date(eleve.date_naissance);
+      const aujourdhui = new Date();
+      const age = aujourdhui.getFullYear() - dateNaissance.getFullYear();
       return { ...eleve, age };
     });
 
@@ -48,15 +42,6 @@ app.get('/', async (req, res) => {
 app.post('/ajouter', async (req, res) => {
   try {
     const { nom, prenom, date_naissance } = req.body;
-    const age = calculerAge(date_naissance);
-    
-    if (age < 1 || age > 70) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "L'âge doit être compris entre 1 et 70 ans" 
-      });
-    }
-
     await ajouterEleve(nom, prenom, date_naissance);
     res.redirect('/');
   } catch (error) {
