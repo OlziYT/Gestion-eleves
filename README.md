@@ -26,7 +26,7 @@ npm install
 3. Accès local ou accès réseau
  Depuis le même PC : http://localhost:3000 (default)
    Depuis un autre PC du réseau local : http://[ADRESSE-IP]:3000 (aller dans server.js et modifié ligne 88 http://`localhost:` a votre adresse ip ex :http://`10.0.0.0:` 
-   tout en gardant le port 3000)
+   tout en gardant le port 3000 ainsi qu'aller dans 'index.php' et modifié ligne 2 $host = 'localhost'; par $host = '0.0.0.0';)
    Remplacez [ADRESSE-IP] par l'adresse IP du PC serveur
    Pour trouver l'adresse IP du PC serveur : Windows : `ipconfig` dans le terminal
 
